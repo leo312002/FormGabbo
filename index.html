@@ -10,7 +10,8 @@
         <link href="Form.css">
         <script src="https://gateway.sumup.com/gateway/ecom/card/v2/sdk.js"></script>
     </head>
-<body>
+
+<body onload="sizeStyle()">
 
     <div class="row mt-5 mb-5"></div>
 
@@ -20,14 +21,14 @@
 
         <form id="form" class="mt-4">
             <!--<div class="formFriend">-->
-                <div class="row-sm mb-4 mt-5">
+                <div id="row-nome-cognome" class="row mb-4 mt-5">
                     <div class="col-lg-3 col-md-2"></div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mx-5 mb-3">
+                    <div id="Nome" class="col-lg-3 col-md-4 col-sm-6 mb-3">
                         <label for="validationDefault01" class="form-label">Nome</label>
                         <input type="text" class="form-control" id="validationDefault01" value="" required>
                     </div>
                     
-                    <div class="col-lg-3 col-md-4 col-sm-6 mx-5">
+                    <div id="Cognome" class="col-lg-3 col-md-4 col-sm-6">
                         <label for="validationDefault02" class="form-label">Cognome</label>
                         <input type="text" class="form-control" id="validationDefault02" value="" required>
                     </div>
@@ -45,9 +46,9 @@
                 </div>
                 <div class="col-md-4 col-2"></div>
             </div>
-            <div id="phoneNumber" class="row-sm mb-4">
+            <div id="phoneNumber" class="row mb-4">
                 <div class="col-md-4 col-2"></div>
-                <div class="col-md-4 col-sm-8 mx-5">
+                <div id="Phone" class="col-md-4 col-sm-8">
                     <label for="validationDefault03" class="form-label">Telefono</label>
                     <div class="input-group">
                         <span class="input-group-text" id="inputGroupPrepend3">+39</span>
@@ -85,5 +86,8 @@
             </div>
         </form>
     </div>
+
+
+    <footer class="text-center">Form iscrizione evento</footer>
 </body>
 </html>

@@ -35,6 +35,31 @@ function removeFriend() {
     }
 }
 
+
+function sizeStyle(){
+  if(window.innerWidth < 576){
+    document.getElementById("row-nome-cognome").classList.remove("row");
+    document.getElementById('Nome').classList.add('mx-5');
+    document.getElementById('Cognome').classList.add('mx-5');
+    document.getElementById("phoneNumber").classList.remove("row");
+    document.getElementById('Phone').classList.add('mx-5');
+  }else if(window.innerWidth >= 576){
+    document.getElementById("row-nome-cognome").classList.add("row");
+    document.getElementById('Nome').classList.remove('mx-5');
+    document.getElementById('Cognome').classList.remove('mx-5');
+    document.getElementById("phoneNumber").classList.add("row");
+    document.getElementById('Phone').classList.remove('mx-5');
+  }
+}
+
+window.addEventListener('resize', function(event) {
+  sizeStyle();
+});
+
+
+
+
+/*
 SumUpCard.mount({
     id: 'sumup-card',
     checkoutId: '2ceffb63-cbbe-4227-87cf-0409dd191a98',
@@ -70,6 +95,5 @@ SumUpCard.mount({
         console.error('Errore:', error);
       });
   });
-
-//document.getElementById("btn-addFriend").addEventListener("click",addFriend())
+*/
 
