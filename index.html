@@ -19,18 +19,18 @@
 
         <h1 class="mt-4">Benvenuto, compila il form per iscriverti all'evento!</h1>
 
-        <form id="form" class="mt-4">
+        <form id="form" class="mt-4" method="POST" action="https://script.google.com/macros/s/AKfycbyrgFzu63KgG7cslKEyimBgG5NwKK9M-NEdN2ViQu4/dev">
             <!--<div class="formFriend">-->
                 <div id="row-nome-cognome" class="row mb-4 mt-5">
                     <div class="col-lg-3 col-md-2"></div>
                     <div id="Nome" class="col-lg-3 col-md-4 col-sm-6 mb-3">
                         <label for="validationDefault01" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="validationDefault01" value="" required>
+                        <input type="text" class="form-control" name="Nome" id="validationDefault01" placeholder="Nome" value="" required>
                     </div>
                     
                     <div id="Cognome" class="col-lg-3 col-md-4 col-sm-6">
                         <label for="validationDefault02" class="form-label">Cognome</label>
-                        <input type="text" class="form-control" id="validationDefault02" value="" required>
+                        <input type="text" class="form-control" name="Cognome" id="validationDefault02" placeholder="Cognome" value="" required>
                     </div>
                     <div class="col-lg-3 col-md-2"></div>
                 </div>
@@ -41,7 +41,7 @@
                     <label for="validationDefaultUsername" class="form-label">Email</label>
                     <div class="input-group">
                         <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                        <input type="email" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
+                        <input type="email" class="form-control" name="Email" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
                     </div>
                 </div>
                 <div class="col-lg-4 col-2"></div>
@@ -52,7 +52,7 @@
                     <label for="validationDefault03" class="form-label">Telefono</label>
                     <div class="input-group">
                         <span class="input-group-text" id="inputGroupPrepend3">+39</span>
-                        <input type="tel" class="form-control" id="validationDefault03" aria-describedby="inputGroupPrepend3" required>
+                        <input type="tel" class="form-control" name="Telefono" id="validationDefault03" aria-describedby="inputGroupPrepend3" required>
                     </div>
                 </div>
                 <div class="col-md-4 col-2"></div>
@@ -84,11 +84,13 @@
             <div class="col-12 mb-5">
                 <button class="btn btn-primary" type="submit">Submit form</button>
             </div>
+
+            <input type="hidden" name="canale_di_vendita" id="canale_di_vendita">
+            <input type="hidden" name="valore_in_euro" id="valore_in_euro">
         </form>
     </div>
 
-    <div class="footer text-center">
-        <footer>Form iscrizione evento</footer>
-    </div>
+    <footer class="footer text-center">Form iscrizione evento</footer>
+
 </body>
 </html>
