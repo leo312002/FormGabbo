@@ -1,13 +1,6 @@
 
-
-const url = "https://script.google.com/macros/s/AKfycbyrgFzu63KgG7cslKEyimBgG5NwKK9M-NEdN2ViQu4/dev";
-//document.getElementById("form").action = url;
-
 var friendAdded = 0;
 var formFriend = 0;
-
-
-
 
 function addFriend(){
     friendAdded++;
@@ -61,6 +54,19 @@ function removeFriend() {
     }
 }
 
+function initialization(){
+  sizeStyle();
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  const canaleDiVendita = urlParams.get('canale_di_vendita');
+  const valoreInEuro = urlParams.get('valore_in_euro');
+
+  document.getElementById('vendita').setAttribute('value', canaleDiVendita);
+  document.getElementById('valore').setAttribute('value', valoreInEuro);
+
+  window.history.pushState('page2', 'Title', window.location.href.split('?')[0]);
+}
+
 
 function sizeStyle(){
   if(window.innerWidth < 576){
@@ -95,16 +101,6 @@ function sizeStyle(){
 window.addEventListener('resize', function(event) {
   sizeStyle();
 });
-
-
-
-const urlParams = new URLSearchParams(window.location.search);
-    const canaleDiVendita = urlParams.get('canale_di_vendita');
-    const valoreInEuro = urlParams.get('valore_in_euro');
-
-    // Imposta i valori nei campi nascosti
-    document.getElementById('canale_di_vendita').value = canaleDiVendita || '';
-    document.getElementById('valore_in_euro').value = valoreInEuro || '';
 
 
 /*

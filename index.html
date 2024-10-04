@@ -11,7 +11,7 @@
         <script src="https://gateway.sumup.com/gateway/ecom/card/v2/sdk.js"></script>
     </head>
 
-<body onload="sizeStyle()">
+<body onload="initialization()">
 
     <div class="row mt-5 mb-5"></div>
 
@@ -64,8 +64,8 @@
             <div class="row mb-4">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-8 d-flex justify-content-evenly">
-                    <button id="btn-addFriend" class="btn btn-primary" onclick="addFriend()">+ add friend</button>
-                    <button id="btn-removeFriend" class="btn btn-primary" onclick="removeFriend()" style="display: none;">- remove friend</button>
+                    <button type="button" id="btn-addFriend" class="btn btn-primary" onclick="addFriend()">+ add friend</button>
+                    <button type="button" id="btn-removeFriend" class="btn btn-primary" onclick="removeFriend()" style="display: none;">- remove friend</button>
                 </div>
                 <div class="col-sm-2"></div>
             </div>
@@ -85,8 +85,8 @@
                 <button class="btn btn-primary" type="submit">Submit form</button>
             </div>
 
-            <input type="hidden" name="canale_di_vendita" id="canale_di_vendita">
-            <input type="hidden" name="valore_in_euro" id="valore_in_euro">
+            <input type="text" name="canale_di_vendita" id="vendita" value="" style="display: none;">
+            <input type="number" name="valore_in_euro" id="valore" value="" style="display: none;">
         </form>
     </div>
 
