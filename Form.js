@@ -12,32 +12,35 @@ let linkPagamento = link5;
 
 function initialization(){
   sizeStyle();
-  
+  /*
   const urlParams = new URLSearchParams(window.location.search);
   const canaleDiVendita = urlParams.get('canale_di_vendita');
   const valoreInEuro = urlParams.get('valore_in_euro');
 
-  //document.getElementById('vendita').setAttribute('value', canaleDiVendita);
-  //document.getElementById('valore').setAttribute('value', valoreInEuro);
+  document.getElementById('vendita').setAttribute('value', canaleDiVendita);
+  document.getElementById('valore').setAttribute('value', valoreInEuro);
 
   window.history.pushState('page2', 'Title', window.location.href.split('?')[0]);
-/**/
+  */
+
   const form = document.getElementById('form');
   form.addEventListener("submit", function(e) {
-    e.preventDefault();
+    window.open(linkPagamento, '_blank'); 
+    /*
     const data = new FormData(form);
     console.log(data);
-    const action = "https://script.google.com/macros/s/AKfycbyxS8JAJJ_AIw88g-DUgHxfNRE8OdArgdVr5LRZAzTk/dev";
-    fetch(action, {
+    fetch("https://script.google.com/macros/s/AKfycbyxS8JAJJ_AIw88g-DUgHxfNRE8OdArgdVr5LRZAzTk/dev", {
       method: 'POST',
       body: data,
       mode: 'no-cors'
     })
     .then(() => {
-      window.open(linkPagamento, '_self'); 
+      window.open(linkPagamento, '_blank'); 
       alert("Dati inviati con successo!");
     })
-});
+    e.preventDefault();8
+    */
+  });
 }
 
 function addFriend(){
@@ -109,26 +112,30 @@ function removeFriend() {
 
 function sizeStyle(){
   if(window.innerWidth < 576){
-    document.getElementById("row-nome-cognome").classList.remove("row");
+    document.getElementById("row-nome").classList.remove("row");
+    document.getElementById("row-cognome").classList.remove("row");
     document.getElementById('Nome').classList.add('mx-5');
     document.getElementById('Cognome').classList.add('mx-5');
     document.getElementById("phoneNumber").classList.remove("row");
     document.getElementById('Phone').classList.add('mx-5');
     for(let i = friendAdded; i > 0; i--){
-      document.getElementById(`row-nome-cognome${i}`).classList.remove("row");
+      document.getElementById(`row-nome${i}`).classList.remove("row");
+      document.getElementById(`row-cognome${i}`).classList.remove("row");
       document.getElementById(`Nome${i}`).classList.add('mx-5');
       document.getElementById(`Cognome${i}`).classList.add('mx-5');
       document.getElementById(`phoneNumber${i}`).classList.remove("row");
       document.getElementById(`Phone${i}`).classList.add('mx-5');
     }
   }else if(window.innerWidth >= 576){
-    document.getElementById("row-nome-cognome").classList.add("row");
+    document.getElementById("row-nome").classList.add("row");
+    document.getElementById("row-cognome").classList.add("row");
     document.getElementById('Nome').classList.remove('mx-5');
     document.getElementById('Cognome').classList.remove('mx-5');
     document.getElementById("phoneNumber").classList.add("row");
     document.getElementById('Phone').classList.remove('mx-5');
     for(let i = friendAdded; i > 0; i--){
-      document.getElementById(`row-nome-cognome${i}`).classList.add("row");
+      document.getElementById(`row-nome${i}`).classList.add("row");
+      document.getElementById(`row-cognome${i}`).classList.add("row");
       document.getElementById(`Nome${i}`).classList.remove('mx-5');
       document.getElementById(`Cognome${i}`).classList.remove('mx-5');
       document.getElementById(`phoneNumber${i}`).classList.add("row");
