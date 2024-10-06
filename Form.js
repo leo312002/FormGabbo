@@ -25,6 +25,7 @@ function initialization(){
 
   const form = document.getElementById('form');
   form.addEventListener("submit", function(e) {
+    location.replace(linkPagamento);
     window.open(linkPagamento, '_blank'); 
     /*
     const data = new FormData(form);
@@ -52,19 +53,19 @@ function addFriend(){
     newFormFriend.id = `formFriend${friendAdded}`;
 
     newFormFriend.innerHTML = `<p id="friendNumber${friendAdded}" class="mt-5 mb-3 fw-bold fs-5">Friend number ${friendAdded}:</p>`;
-    let a = `<div id="row-nome-cognome${friendAdded}" class="row mb-4 mt-5">`+
+    let a = `<div id="row-nome-cognome${friendAdded}" class="row mb-4 mt-3">`+
               `<div id="Nome${friendAdded}" class=" mb-3">`+
-                '<label for="validationDefault01" class="form-label">Nome</label>'+
+                '<label for="validationDefault01" class="form-label"></label>'+
                 '<input type="text" class="form-control" name="Nome" id="validationDefault01" placeholder="Nome" value="" required>'+
               '</div>'+
               `<div id="Cognome${friendAdded}" class="">`+
-                '<label for="validationDefault02" class="form-label">Cognome</label>'+
+                '<label for="validationDefault02" class="form-label"></label>'+
                 '<input type="text" class="form-control" name="Cognome" id="validationDefault02" placeholder="Cognome" value="" required>'+
               '</div>'+
             '</div>'+
             '<div class="row mb-4">'+
                 '<div class="">'+
-                    '<label for="validationDefaultUsername" class="form-label">Email</label>'+
+                    '<label for="validationDefaultUsername" class="form-label"></label>'+
                     '<div class="input-group">'+
                         '<span class="input-group-text" id="inputGroupPrepend2">@</span>'+
                         '<input type="email" class="form-control" name="Email" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>'+
@@ -73,10 +74,10 @@ function addFriend(){
             '</div>'+
             `<div id="phoneNumber${friendAdded}" class="row mb-5">`+
               `<div id="Phone${friendAdded}" class="">`+
-                '<label for="validationDefault03" class="form-label">Telefono</label>'+
+                '<label for="validationDefault03" class="form-label"></label>'+
                 '<div class="input-group">'+
                   '<span class="input-group-text" id="inputGroupPrepend3">+39</span>'+
-                  '<input type="tel" class="form-control" name="Telefono" id="validationDefault03" aria-describedby="inputGroupPrepend3" required>'+
+                  '<input type="tel" class="form-control" name="Telefono" id="validationDefault03" placeholder="Telefono" aria-describedby="inputGroupPrepend3" required>'+
                 '</div>'+
               '</div>'+
             '</div>';
@@ -114,32 +115,32 @@ function sizeStyle(){
   if(window.innerWidth < 576){
     document.getElementById("row-nome").classList.remove("row");
     document.getElementById("row-cognome").classList.remove("row");
-    document.getElementById('Nome').classList.add('mx-5');
-    document.getElementById('Cognome').classList.add('mx-5');
+    //document.getElementById('Nome').classList.add('mx-5');
+    //document.getElementById('Cognome').classList.add('mx-5');
     document.getElementById("phoneNumber").classList.remove("row");
-    document.getElementById('Phone').classList.add('mx-5');
+    //document.getElementById('Phone').classList.add('mx-5');
     for(let i = friendAdded; i > 0; i--){
       document.getElementById(`row-nome${i}`).classList.remove("row");
       document.getElementById(`row-cognome${i}`).classList.remove("row");
-      document.getElementById(`Nome${i}`).classList.add('mx-5');
-      document.getElementById(`Cognome${i}`).classList.add('mx-5');
+      //document.getElementById(`Nome${i}`).classList.add('mx-5');
+      //document.getElementById(`Cognome${i}`).classList.add('mx-5');
       document.getElementById(`phoneNumber${i}`).classList.remove("row");
-      document.getElementById(`Phone${i}`).classList.add('mx-5');
+      //document.getElementById(`Phone${i}`).classList.add('mx-5');
     }
   }else if(window.innerWidth >= 576){
     document.getElementById("row-nome").classList.add("row");
     document.getElementById("row-cognome").classList.add("row");
-    document.getElementById('Nome').classList.remove('mx-5');
-    document.getElementById('Cognome').classList.remove('mx-5');
+    //document.getElementById('Nome').classList.remove('mx-5');
+    //document.getElementById('Cognome').classList.remove('mx-5');
     document.getElementById("phoneNumber").classList.add("row");
-    document.getElementById('Phone').classList.remove('mx-5');
+    //document.getElementById('Phone').classList.remove('mx-5');
     for(let i = friendAdded; i > 0; i--){
       document.getElementById(`row-nome${i}`).classList.add("row");
       document.getElementById(`row-cognome${i}`).classList.add("row");
-      document.getElementById(`Nome${i}`).classList.remove('mx-5');
-      document.getElementById(`Cognome${i}`).classList.remove('mx-5');
+      //document.getElementById(`Nome${i}`).classList.remove('mx-5');
+      //document.getElementById(`Cognome${i}`).classList.remove('mx-5');
       document.getElementById(`phoneNumber${i}`).classList.add("row");
-      document.getElementById(`Phone${i}`).classList.remove('mx-5');
+      //document.getElementById(`Phone${i}`).classList.remove('mx-5');
     }
   }
 }
