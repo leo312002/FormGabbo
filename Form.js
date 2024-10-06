@@ -25,7 +25,6 @@ function initialization(){
 
   const form = document.getElementById('form');
   form.addEventListener("submit", function(e) {
-    location.replace(linkPagamento);
     window.open(linkPagamento, '_blank'); 
     /*
     const data = new FormData(form);
