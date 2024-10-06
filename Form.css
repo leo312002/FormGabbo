@@ -1,8 +1,6 @@
 
-.footer{
-    color: #fff;
-    background-color: #0d6efd;
-    padding: 10px 0 10px 0;
+#form{
+    width: 100%;
 }
 
 #link-pagamento{
@@ -18,6 +16,15 @@
       width: 80% !important;
     }
   }
+
+
+.footer{
+    color: #fff;
+    background-color: #0d6efd;
+    padding: 10px 0 10px 0;
+}
+
+
 
 /*preso dal sito: https://codepen.io/joaqo89/pen/vYGLzqX */
 .wrapper {
