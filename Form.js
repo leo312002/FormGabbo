@@ -1,6 +1,14 @@
 
 let friendAdded = 0;
 let totPerson = 1;
+const link5 = "https://pay.sumup.com/b2c/Q28OH91I";
+const link10 = "https://pay.sumup.com/b2c/Q5ACLDVZ";
+const link15 = "https://pay.sumup.com/b2c/QWM6N4T3";
+const link20 = "https://pay.sumup.com/b2c/QNCWRBHR";
+const link25 = "https://pay.sumup.com/b2c/QRYBF2ZH";
+const link30 = "https://pay.sumup.com/b2c/Q038L7V3";
+
+let linkPagamento = link5;
 
 function initialization(){
   sizeStyle();
@@ -9,10 +17,27 @@ function initialization(){
   const canaleDiVendita = urlParams.get('canale_di_vendita');
   const valoreInEuro = urlParams.get('valore_in_euro');
 
-  document.getElementById('vendita').setAttribute('value', canaleDiVendita);
-  document.getElementById('valore').setAttribute('value', valoreInEuro);
+  //document.getElementById('vendita').setAttribute('value', canaleDiVendita);
+  //document.getElementById('valore').setAttribute('value', valoreInEuro);
 
   window.history.pushState('page2', 'Title', window.location.href.split('?')[0]);
+/**/
+  const form = document.getElementById('form');
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    console.log(data);
+    const action = "https://script.google.com/macros/s/AKfycbyxS8JAJJ_AIw88g-DUgHxfNRE8OdArgdVr5LRZAzTk/dev";
+    fetch(action, {
+      method: 'POST',
+      body: data,
+      mode: 'no-cors'
+    })
+    .then(() => {
+      window.open(linkPagamento, '_self'); 
+      alert("Dati inviati con successo!");
+    })
+});
 }
 
 function addFriend(){
@@ -24,28 +49,33 @@ function addFriend(){
     newFormFriend.id = `formFriend${friendAdded}`;
 
     newFormFriend.innerHTML = `<p id="friendNumber${friendAdded}" class="mt-5 mb-3 fw-bold fs-5">Friend number ${friendAdded}:</p>`;
-    let a = `<div id="row-nome-cognome${friendAdded}" class="row mb-4 mt-4">`+
-              '<div class="col-lg-3 col-md-2"></div>'+
-              `<div id="Nome${friendAdded}" class="col-lg-3 col-md-4 col-sm-6 mb-3">`+
+    let a = `<div id="row-nome-cognome${friendAdded}" class="row mb-4 mt-5">`+
+              `<div id="Nome${friendAdded}" class=" mb-3">`+
                 '<label for="validationDefault01" class="form-label">Nome</label>'+
-                '<input type="text" class="form-control" id="validationDefault01" value="" required>'+
+                '<input type="text" class="form-control" name="Nome" id="validationDefault01" placeholder="Nome" value="" required>'+
               '</div>'+
-              `<div id="Cognome${friendAdded}" class="col-lg-3 col-md-4 col-sm-6">`+
+              `<div id="Cognome${friendAdded}" class="">`+
                 '<label for="validationDefault02" class="form-label">Cognome</label>'+
-                '<input type="text" class="form-control" id="validationDefault02" value="" required>'+
+                '<input type="text" class="form-control" name="Cognome" id="validationDefault02" placeholder="Cognome" value="" required>'+
               '</div>'+
-              '<div class="col-lg-3 col-md-2"></div>'+
+            '</div>'+
+            '<div class="row mb-4">'+
+                '<div class="">'+
+                    '<label for="validationDefaultUsername" class="form-label">Email</label>'+
+                    '<div class="input-group">'+
+                        '<span class="input-group-text" id="inputGroupPrepend2">@</span>'+
+                        '<input type="email" class="form-control" name="Email" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>'+
+                    '</div>'+
+                '</div>'+
             '</div>'+
             `<div id="phoneNumber${friendAdded}" class="row mb-5">`+
-              '<div class="col-md-4 col-2"></div>'+
-              `<div id="Phone${friendAdded}" class="col-md-4 col-sm-8">`+
+              `<div id="Phone${friendAdded}" class="">`+
                 '<label for="validationDefault03" class="form-label">Telefono</label>'+
                 '<div class="input-group">'+
                   '<span class="input-group-text" id="inputGroupPrepend3">+39</span>'+
-                  '<input type="tel" class="form-control" id="validationDefault03" aria-describedby="inputGroupPrepend3" required>'+
+                  '<input type="tel" class="form-control" name="Telefono" id="validationDefault03" aria-describedby="inputGroupPrepend3" required>'+
                 '</div>'+
               '</div>'+
-              '<div class="col-md-4 col-2"></div>'+
             '</div>';
 
     newFormFriend.innerHTML += a;
@@ -58,20 +88,7 @@ function addFriend(){
       document.getElementById("btn-addFriend").style.display = "none";
     }
 
-    if(totPerson === 1){
-      document.getElementById("link-pagamento").href = "https://pay.sumup.com/b2c/QL1VNRLV";
-    }else if(totPerson === 2){
-      document.getElementById("link-pagamento").href = "https://pay.sumup.com/b2c/Q8KCKOTF";
-    }else if(totPerson === 3){
-      document.getElementById("link-pagamento").href = "https://pay.sumup.com/b2c/QL1VNRLV";
-    }else if(totPerson === 4){
-      document.getElementById("link-pagamento").href = "https://pay.sumup.com/b2c/Q8KCKOTF";
-    }else if(totPerson === 5){
-      document.getElementById("link-pagamento").href = "https://pay.sumup.com/b2c/QL1VNRLV";
-    }else if(totPerson === 6){
-      document.getElementById("link-pagamento").href = "https://pay.sumup.com/b2c/Q8KCKOTF";
-    }
-
+    pagamento();
     sizeStyle();
 }
 
@@ -86,19 +103,7 @@ function removeFriend() {
       document.getElementById("btn-addFriend").style.display = "inline-block";
     }
 
-    if(totPerson === 1){
-      document.getElementById("link-pagamento").href = "https://pay.sumup.com/b2c/QL1VNRLV";
-    }else if(totPerson === 2){
-      document.getElementById("link-pagamento").href = "https://pay.sumup.com/b2c/Q8KCKOTF";
-    }else if(totPerson === 3){
-      document.getElementById("link-pagamento").href = "https://pay.sumup.com/b2c/QL1VNRLV";
-    }else if(totPerson === 4){
-      document.getElementById("link-pagamento").href = "https://pay.sumup.com/b2c/Q8KCKOTF";
-    }else if(totPerson === 5){
-      document.getElementById("link-pagamento").href = "https://pay.sumup.com/b2c/QL1VNRLV";
-    }else if(totPerson === 6){
-      document.getElementById("link-pagamento").href = "https://pay.sumup.com/b2c/Q8KCKOTF";
-    }
+    pagamento();
 }
 
 
@@ -136,6 +141,37 @@ window.addEventListener('resize', function(event) {
   sizeStyle();
 });
 
+function pagamento(){
+  if(totPerson === 1){
+    linkPagamento = link5;
+  }else if(totPerson === 2){
+    linkPagamento = link10;
+  }else if(totPerson === 3){
+    linkPagamento = link15;
+  }else if(totPerson === 4){
+    linkPagamento = link20;
+  }else if(totPerson === 5){
+    linkPagamento = link25;
+  }else if(totPerson === 6){
+    linkPagamento = link30;
+  }
+}
+
+/*
+cerca di inviare i dati al google sheet in modo diverso cosi' da poter mettere nell'attributo action del form il link di pagamento
+
+non puoi aprire il link di pagamento direttamente da apps script perche' non sai che link aprire
+*/
+
+
+/*
+function paga(){
+  window.location = linkPagamento;
+  //window.open(linkPagamento,'_parent',''); 
+  window.close();
+  return false;
+}
+*/
 
 /*
 {

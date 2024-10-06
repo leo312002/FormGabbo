@@ -16,95 +16,102 @@
     <div class="row mt-5 mb-5"></div>
 
     <div class="container text-center">
-
-        <h1 class="mt-4">Benvenuto, compila il form per iscriverti all'evento!</h1>
-
-        <form id="form" class="mt-4" method="POST" action="https://script.google.com/macros/s/AKfycbyrgFzu63KgG7cslKEyimBgG5NwKK9M-NEdN2ViQu4/dev">
-            <!--<div class="formFriend">-->
-                <div id="row-nome-cognome" class="row mb-4 mt-5">
-                    <div class="col-lg-3 col-md-2"></div>
-                    <div id="Nome" class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                        <label for="validationDefault01" class="form-label">Nome</label>
-                        <input type="text" class="form-control" name="Nome" id="validationDefault01" placeholder="Nome" value="" required>
-                    </div>
-                    
-                    <div id="Cognome" class="col-lg-3 col-md-4 col-sm-6">
-                        <label for="validationDefault02" class="form-label">Cognome</label>
-                        <input type="text" class="form-control" name="Cognome" id="validationDefault02" placeholder="Cognome" value="" required>
-                    </div>
-                    <div class="col-lg-3 col-md-2"></div>
-                </div>
-            <!--</div>-->
-            <div class="row mb-4">
-                <div class="col-lg-4 col-2"></div>
-                <div class="col-lg-4 col-sm-8">
-                    <label for="validationDefaultUsername" class="form-label">Email</label>
-                    <div class="input-group">
-                        <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                        <input type="email" class="form-control" name="Email" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-2"></div>
-            </div>
-            <div id="phoneNumber" class="row mb-4">
-                <div class="col-md-4 col-2"></div>
-                <div id="Phone" class="col-md-4 col-sm-8">
-                    <label for="validationDefault03" class="form-label">Telefono</label>
-                    <div class="input-group">
-                        <span class="input-group-text" id="inputGroupPrepend3">+39</span>
-                        <input type="tel" class="form-control" name="Telefono" id="validationDefault03" aria-describedby="inputGroupPrepend3" required>
-                    </div>
-                </div>
-                <div class="col-md-4 col-2"></div>
-            </div>
-
-            <div id="formFriend"></div>
+        <section class="wrapper">
+            <div class="container">
+                <div class="img__container">
+                <img src="image/circolo-limoni.png" alt="Immagine Circolo limoni" class="img"> 
+            </div>   
+                <div class="content justify-content-center">
+                    <h1 class="mt-4">Compila il form, procedi con il pagamento e ricevi la tua tessera per l'evento!</h1>
+                    <h6 class="mt-4">Aggiungi fino 5 amici per fare un unico ordine</h6>
+                    <form id="form" class="mt-4" method="POST" action="https://script.google.com/macros/s/AKfycbyxS8JAJJ_AIw88g-DUgHxfNRE8OdArgdVr5LRZAzTk/dev">
+                        <!--<div class="formFriend">-->
+                            <div id="row-nome" class="row mt-4 mb-4">
+                                <div id="Nome" class="">
+                                    <label for="validationDefault01" class="form-label">Nome</label>
+                                    <input type="text" class="form-control" name="Nome" id="validationDefault01" placeholder="Nome" value="" required>
+                                </div>
+                            </div>
+                            <div id="row-cognome" class="row mb-4">
+                                <div id="Cognome" class="mb-3">
+                                    <label for="validationDefault02" class="form-label">Cognome</label>
+                                    <input type="text" class="form-control" name="Cognome" id="validationDefault02" placeholder="Cognome" value="" required>
+                                </div>
+                            </div>
+                        <!--</div>-->
+                        <div class="row mb-4">
+                            <div class="">
+                                <label for="validationDefaultUsername" class="form-label">Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                                    <input type="email" class="form-control" name="Email" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="phoneNumber" class="row mb-5">
+                            <div id="Phone" class="">
+                                <label for="validationDefault03" class="form-label">Telefono</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroupPrepend3">+39</span>
+                                    <input type="tel" class="form-control" name="Telefono" id="validationDefault03" aria-describedby="inputGroupPrepend3" required>
+                                </div>
+                            </div>
+                        </div>
             
-
-            <div class="row mb-4">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-8 d-flex justify-content-evenly">
-                    <button type="button" id="btn-addFriend" class="btn btn-primary" onclick="addFriend()">+ add friend</button>
-                    <button type="button" id="btn-removeFriend" class="btn btn-primary" onclick="removeFriend()" style="display: none;">- remove friend</button>
+                        <div id="formFriend"></div>
+                        
+            
+                        <div class="row mb-4">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-8 d-flex justify-content-evenly">
+                                <button type="button" id="btn-addFriend" class="btn btn-primary" onclick="addFriend()">+ add friend</button>
+                                <button type="button" id="btn-removeFriend" class="btn btn-primary" onclick="removeFriend()" style="display: none;">- remove friend</button>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+            
+                        <div id="sumup-card"></div>
+                        <div id="sumup-payment-form"></div>
+            <!--
+                        <div class="col-12 mb-5">
+                            <button class="btn btn-primary" type="submit"><a id="link-pagamento" class="btn btn-primary" href="https://pay.sumup.com/b2c/QL1VNRLV" disable>Pagamento</a></button>
+                        </div>
+            
+                        <div class="col-12 mb-4">
+                            <div class="form-check">
+                                <input class="" type="checkbox" value="" id="invalidCheck2" required>
+                                <label class="form-check-label" for="invalidCheck2">
+                                Agree to terms and conditions
+                                </label>
+                            </div>
+                        </div>
+            -->
+                        <div class="col-12 mb-5">
+                            <button class="btn btn-primary" type="submit">Procedi al pagamento</button>
+                        </div>
+            
+                        <input type="text" name="canale_di_vendita" id="vendita" value="" style="display: none;">
+                        <input type="number" name="valore_in_euro" id="valore" value="" style="display: none;">
+                    </form>
+            <!--
+                    <form action="http://127.0.0.1:3000/request" method="POST">
+                        <input type="text" name="name" placeholder="Nome" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <div class="col-12 mb-5">
+                            <button class="btn btn-primary" type="submit">Pagamento</button>
+                        </div>
+                    </form>
+            -->
+                    <p class="text">circolo limoni 🍋✨ halloween party 
+                        giovedì 31 ottobre — from 23:00⁣
+                        le roi music hall • via stradella 8</p>
                 </div>
-                <div class="col-sm-2"></div>
             </div>
+        </section>
 
-            <div id="sumup-card"></div>
-            <div id="sumup-payment-form"></div>
-
-            <div class="col-12 mb-5">
-                <button class="btn btn-primary" type="submit"><a id="link-pagamento" class="btn btn-primary" href="https://pay.sumup.com/b2c/QL1VNRLV" disable>Pagamento</a></button>
-            </div>
-
-            <div class="col-12 mb-4">
-                <div class="form-check">
-                    <input class="" type="checkbox" value="" id="invalidCheck2" required>
-                    <label class="form-check-label" for="invalidCheck2">
-                    Agree to terms and conditions
-                    </label>
-                </div>
-            </div>
-
-            <div class="col-12 mb-5">
-                <button class="btn btn-primary" type="submit">Submit form</button>
-            </div>
-
-            <input type="text" name="canale_di_vendita" id="vendita" value="" style="display: none;">
-            <input type="number" name="valore_in_euro" id="valore" value="" style="display: none;">
-        </form>
-<!--
-        <form action="http://127.0.0.1:3000/request" method="POST">
-            <input type="text" name="name" placeholder="Nome" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <div class="col-12 mb-5">
-                <button class="btn btn-primary" type="submit">Pagamento</button>
-            </div>
-        </form>
--->
+        
     </div>
 
-    <footer class="footer text-center">Form iscrizione evento</footer>
 
 </body>
 </html>
