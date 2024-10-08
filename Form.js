@@ -25,7 +25,7 @@ function initialization(){
   window.history.pushState('page2', 'Title', window.location.href.split('?')[0]);
   /**/
 
-  const form = document.getElementById('form');
+  const form = document.getElementById('sheetdb-form');
   form.addEventListener("submit", function(e) {
     window.open(linkPagamento, '_blank');
     
@@ -148,11 +148,12 @@ function sizeStyle(){
     }
   }
 }
-*/
+
 
 window.addEventListener('resize', function(event) {
   sizeStyle();
 });
+*/
 
 function pagamento(){
   if(totPerson === 1){
