@@ -28,8 +28,8 @@ function initialization(){
   const form = document.getElementById('sheetdb-form');
   form.addEventListener("submit", function(e) {
     window.open(linkPagamento, '_blank');
-    
     /*
+    
     const data = new FormData(form);
     console.log(data);
     fetch("https://script.google.com/macros/s/AKfycbyxS8JAJJ_AIw88g-DUgHxfNRE8OdArgdVr5LRZAzTk/dev", {
@@ -46,6 +46,7 @@ function initialization(){
   });
 }
 
+
 function addFriend(){
     friendAdded++;
     totPerson++;
@@ -58,13 +59,13 @@ function addFriend(){
     let a = `<div id="row-nome${friendAdded}" class="row">
               <div id="Nome${friendAdded}">
                 <label for="validationDefault01" class="form-label"></label>
-                <input type="text" class="form-control" name="Nome" placeholder="Nome" id="validationDefault01" value="" required>
+                <input type="text" class="form-control" name="Nome${friendAdded}" placeholder="Nome" id="validationDefault01" value="" required>
               </div>
             </div>
             <div id="row-cognome${friendAdded}" class="row">
               <div id="Cognome${friendAdded}" class="">
                 <label for="validationDefault02" class="form-label"></label>
-                <input type="text" class="form-control" name="Cognome" placeholder="Cognome" id="validationDefault02" value="" required>
+                <input type="text" class="form-control" name="Cognome${friendAdded}" placeholder="Cognome" id="validationDefault02" value="" required>
               </div>
             </div>
             <div id="Email${friendAdded}" class="row">
@@ -72,7 +73,7 @@ function addFriend(){
                 <label for="validationDefaultUsername" class="form-label"></label>
                 <div class="input-group">
                   <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                  <input type="email" class="form-control" name="Email" placeholder="Email" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
+                  <input type="email" class="form-control" name="Email${friendAdded}" placeholder="Email" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
                 </div>
               </div>
             </div>
@@ -81,7 +82,7 @@ function addFriend(){
                 <label for="validationDefault03" class="form-label"></label>
                 <div class="input-group">
                   <span class="input-group-text" id="inputGroupPrepend3">+39</span>
-                  <input type="tel" class="form-control" name="Telefono" placeholder="Telefono" id="validationDefault03" aria-describedby="inputGroupPrepend3" required>
+                  <input type="tel" class="form-control" name="Telefono${friendAdded}" placeholder="Telefono" id="validationDefault03" aria-describedby="inputGroupPrepend3" required>
                 </div>
               </div>
             </div>`;
