@@ -1,12 +1,12 @@
 
 let friendAdded = 0;
 let totPerson = 1;
-const link5 = "https://pay.sumup.com/b2c/Q28OH91I";
-const link10 = "https://pay.sumup.com/b2c/Q5ACLDVZ";
-const link15 = "https://pay.sumup.com/b2c/QWM6N4T3";
-const link20 = "https://pay.sumup.com/b2c/QNCWRBHR";
-const link25 = "https://pay.sumup.com/b2c/QRYBF2ZH";
-const link30 = "https://pay.sumup.com/b2c/Q038L7V3";
+const link5 = "https://pay.sumup.com/b2c/Q5ACLDVZ"; //10
+const link10 = "https://pay.sumup.com/b2c/QNCWRBHR"; //20
+const link15 = "https://pay.sumup.com/b2c/Q038L7V3"; //30
+const link20 = "https://pay.sumup.com/b2c/QEOXEFK9"; //40
+const link25 = "https://pay.sumup.com/b2c/QYKT3G65"; //50
+const link30 = "https://pay.sumup.com/b2c/Q8I71GMC"; //60
 
 let linkPagamento = link5;
 
@@ -17,16 +17,22 @@ function initialization(){
   const canaleDiVendita = urlParams.get('ncdhsdskfdnd');
   const valoreInEuro = urlParams.get('riekndaocno');
 
-  document.getElementById('vendita').setAttribute('value', canaleDiVendita);
-  document.getElementById('valore').setAttribute('value', valoreInEuro);
-
-  console.log(document.getElementById('vendita').getAttribute('value'));
+  document.getElementById('vendita').value = canaleDiVendita;
+  document.getElementById('valore').value = valoreInEuro;
 
   window.history.pushState('page2', 'Title', window.location.href.split('?')[0]);
   /**/
 
   const form = document.getElementById('sheetdb-form');
   form.addEventListener("submit", function(e) {
+    var d = new Date();
+
+    const ora = `${d.getHours()}`+"."+`${d.getMinutes()}`+"."+`${d.getSeconds()}`;
+    var date = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ` + ora;
+
+    document.getElementById('Date').value = date;
+
+    //e.preventDefault();
     window.open(linkPagamento, '_blank');
     /*
     
@@ -41,7 +47,7 @@ function initialization(){
       window.open(linkPagamento, '_blank'); 
       alert("Dati inviati con successo!");
     })
-    e.preventDefault();8
+    e.preventDefault();
     */
   });
 }
@@ -100,7 +106,11 @@ function addFriend(){
     pagamento();
     //sizeStyle();
 }
-
+/*
+function pagamento(){
+  window.location.href = linkPagamento;
+}
+*/
 function removeFriend() {
     document.getElementById(`formFriend${friendAdded}`).remove();
     friendAdded--;
