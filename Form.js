@@ -12,6 +12,9 @@ let linkPagamento = link5;
 
 function initialization(){
   //sizeStyle();
+  if(navigator.userAgent.includes("Instagram")){
+    window.location.href = "https://circololimoni.it/";
+  }
   
   const urlParams = new URLSearchParams(window.location.search);
   const canaleDiVendita = urlParams.get('ncdhsdskfdnd');
@@ -28,7 +31,7 @@ function initialization(){
     var d = new Date();
 
     const ora = `${d.getHours()}`+"."+`${d.getMinutes()}`+"."+`${d.getSeconds()}`;
-    var date = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ` + ora;
+    var date = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ` + ora;
 
     document.getElementById('Date').value = date;
 
