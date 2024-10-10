@@ -15,10 +15,9 @@ function initialization(){
   let insta = navigator.userAgent.includes("Instagram");
   if(insta){
     console.log("instagram")
+    prompt("Stai visulizzando il sito da instagram. Alcune azioni potrebbero non funzionare correttamente, per evitare questo tipo di problemi copia il link https://circololimoni.it/ direttamente su Chrome o Safari");
     document.getElementById('instagram').innerHTML = `<a href="https://circololimoni.it/">external browser</a>`;
     //window.location.href = "https://circololimoni.it/";
-  }else{
-    console.log("no instagram")
   }
   
   const urlParams = new URLSearchParams(window.location.search);
@@ -39,9 +38,8 @@ function initialization(){
     var date = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ` + ora;
 
     document.getElementById('Date').value = date;
-
     //e.preventDefault();
-    window.open(linkPagamento, '_blank');
+    //window.open(linkPagamento, '_blank');
     /*
     
     const data = new FormData(form);
@@ -59,7 +57,24 @@ function initialization(){
     */
   });
 }
+/*
+async function fetchData(){
+  try{
+    const response = await fetch("https://sheetdb.io/api/v1/70kkrjloojdhb");
 
+    if(!response.ok){
+      throw new Error("Errore nella ricezione dei dati");
+    }
+
+    const data = await response.json();
+
+    console.log(data);
+
+  }catch(e){
+    console.log(e);
+  }
+}
+*/
 
 function addFriend(){
     friendAdded++;
