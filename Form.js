@@ -15,7 +15,7 @@ function initialization(){
   let insta = navigator.userAgent.includes("Instagram");
   if(insta){
     console.log("instagram")
-    prompt("Stai visulizzando il sito da instagram. Alcune azioni potrebbero non funzionare correttamente, per evitare questo tipo di problemi copia il link https://circololimoni.it/ direttamente su Chrome o Safari");
+    alert("Stai visulizzando il sito da instagram. Alcune azioni potrebbero non funzionare correttamente, per evitare questo tipo di problemi copia il link https://circololimoni.it/ direttamente su Chrome o Safari");
     document.getElementById('instagram').innerHTML = `<a href="https://circololimoni.it/">external browser</a>`;
     //window.location.href = "https://circololimoni.it/";
   }
