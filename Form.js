@@ -12,9 +12,13 @@ let linkPagamento = link5;
 
 function initialization(){
   //sizeStyle();
-  if(navigator.userAgent.includes("Instagram")){
+  let insta = navigator.userAgent.includes("Instagram");
+  if(insta){
+    console.log("instagram")
     document.getElementById('instagram').innerHTML = `<a href="https://circololimoni.it/">external browser</a>`;
-    window.location.href = "https://circololimoni.it/";
+    //window.location.href = "https://circololimoni.it/";
+  }else{
+    console.log("no instagram")
   }
   
   const urlParams = new URLSearchParams(window.location.search);
