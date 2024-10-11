@@ -19,8 +19,8 @@
             </div>   
                 <div class="content">
                     <h6 class="mt-2 px-2 mx-2 mb-1">Compila il form, procedi con il pagamento, ricevi la tua tessera per l'evento!</h6> <!--mx-3-->
-                    <div id="instagram"></div>
-                    <form id="sheetdb-form">
+                    <div id="instagram" class="alert alert-warning mt-3" role="alert">Stai visulizzando il sito da instagram. Alcune azioni potrebbero non funzionare correttamente, per evitare questo tipo di problemi copia il link https://circololimoni.it/ direttamente su Chrome o Safari</div>
+                    <form id="sheetdb-form" method="POST" action="https://sheetdb.io/api/v1/70kkrjloojdhb">
                         <!--<div class="formFriend">-->
                             <div id="row-nome" class="row">
                                 <div id="Nome">
@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="d-grid gap-2 mb-4">
-                            <button class="btn btn-primary btn-lg" type="submit" onclick="fetchData()">Procedi al pagamento</button>
+                            <button class="btn btn-primary btn-lg" type="submit">Procedi al pagamento</button>
                         </div>
             
                         <input type="text" name="canale_di_vendita" id="vendita" value="" style="display: none;">
