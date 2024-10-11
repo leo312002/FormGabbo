@@ -9,16 +9,25 @@ const link25 = "https://pay.sumup.com/b2c/QYKT3G65"; //50
 const link30 = "https://pay.sumup.com/b2c/Q8I71GMC"; //60
 
 let linkPagamento = link5;
+let CardSumUp;
 
 function initialization(){
   //sizeStyle();
+
+  CardSumUp = SumUpCard.mount({
+    amount: 10*totPerson,
+    currency: 'EUR',
+    locale: "it-IT",
+    onResponse: (type, body) => {
+      console.log('Type', type);
+      console.log('Body', body);
+    }
+  });
+
   let insta = navigator.userAgent.includes("Instagram");
   const isAndroid = navigator.userAgent.toLowerCase().includes('android');
-  console.log(`The user is on an Android: ${isAndroid}`);
   if(insta && isAndroid){
-    console.log("instagram")
     document.getElementById("instagram").style.display = "inline-block";
-    //window.location.href = "https://circololimoni.it/";
   }
   
   const urlParams = new URLSearchParams(window.location.search);
@@ -58,6 +67,9 @@ function initialization(){
     */
   });
 }
+
+
+
 /*
 async function fetchData(){
   try{
@@ -128,6 +140,7 @@ function addFriend(){
     }
 
     pagamento();
+    CardSumUp.update({amount: 10*totPerson});
     //sizeStyle();
 }
 /*
@@ -147,44 +160,10 @@ function removeFriend() {
     }
 
     pagamento();
+    CardSumUp.update({amount: 10*totPerson});
 }
 
 /*
-function sizeStyle(){
-  if(window.innerWidth < 576){
-    //document.getElementById("row-nome").classList.remove("row");
-    //document.getElementById("row-cognome").classList.remove("row");
-    //document.getElementById('Nome').classList.add('mx-5');
-    //document.getElementById('Cognome').classList.add('mx-5');
-    //document.getElementById("phoneNumber").classList.remove("row");
-    //document.getElementById('Phone').classList.add('mx-5');
-    for(let i = friendAdded; i > 0; i--){
-      //document.getElementById(`row-nome${i}`).classList.remove("row");
-      //document.getElementById(`row-cognome${i}`).classList.remove("row");
-      //document.getElementById(`Nome${i}`).classList.add('mx-5');
-      //document.getElementById(`Cognome${i}`).classList.add('mx-5');
-      //document.getElementById(`phoneNumber${i}`).classList.remove("row");
-      //document.getElementById(`Phone${i}`).classList.add('mx-5');
-    }
-  }else if(window.innerWidth >= 576){
-    //document.getElementById("row-nome").classList.add("row");
-    //document.getElementById("row-cognome").classList.add("row");
-    //document.getElementById('Nome').classList.remove('mx-5');
-    //document.getElementById('Cognome').classList.remove('mx-5');
-    //document.getElementById("phoneNumber").classList.add("row");
-    //document.getElementById('Phone').classList.remove('mx-5');
-    for(let i = friendAdded; i > 0; i--){
-      //document.getElementById(`row-nome${i}`).classList.add("row");
-      //document.getElementById(`row-cognome${i}`).classList.add("row");
-      //document.getElementById(`Nome${i}`).classList.remove('mx-5');
-      //document.getElementById(`Cognome${i}`).classList.remove('mx-5');
-      //document.getElementById(`phoneNumber${i}`).classList.add("row");
-      //document.getElementById(`Phone${i}`).classList.remove('mx-5');
-    }
-  }
-}
-
-
 window.addEventListener('resize', function(event) {
   sizeStyle();
 });
