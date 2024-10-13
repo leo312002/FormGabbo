@@ -44,22 +44,8 @@ function initialization(){
 
     document.getElementById('Date').value = date;
     //e.preventDefault();
-    window.open(linkPagamento, '_blank');
-    /*
-    
-    const data = new FormData(form);
-    console.log(data);
-    fetch("https://script.google.com/macros/s/AKfycbyxS8JAJJ_AIw88g-DUgHxfNRE8OdArgdVr5LRZAzTk/dev", {
-      method: 'POST',
-      body: data,
-      mode: 'no-cors'
-    })
-    .then(() => {
-      window.open(linkPagamento, '_blank'); 
-      alert("Dati inviati con successo!");
-    })
-    e.preventDefault();
-    */
+    //window.open(linkPagamento, '_blank');
+
   });
 }
 
@@ -176,18 +162,6 @@ function pagamento(){
   }
 }
 
-async function getCardDate(){
-  const res = await fetch("http://localhost:5500"+"/cardData", {
-    method: "get",
-    headers: {
-      'Content-Type': 'application/json'
-    }, body: {
-      "description": "Sample one-time payment"
-    }
-  })
-  console.log(res);
-
-}
 
 
 let checkoutData;
@@ -198,15 +172,15 @@ async function createCheckout(){
     const response = await fetch('https://api.sumup.com/v0.1/checkouts', {
       method: "POST",
       headers: {
-        'Authorization': 'Bearer sup_sk_eNAFh7E8QmnNNdi5s8rTzykwNmH9BaFrM',
+        'Authorization': 'Bearer sup_sk_m3XZP5mvErHlqGVPeuCkxeDV9HVHOL0sT',
         'Content-Type': 'application/x-www-form-urlencoded'
       }, 
       body: new URLSearchParams({
         'checkout_reference': idCheckOut,
         'amount': prezzo*totPerson,
         'currency': "EUR",
-        "merchant_code": "MRE27XD3",
-        'pay_to_email' : "yokes-hearted-0m@icloud.com",
+        "merchant_code": "MX6KFSEN",
+        'pay_to_email' : "fd0f63dbb0c248b6a102302cee7553a2@developer.sumup.com",
         'description': "Sample one-time payment"
       })
     })
@@ -216,9 +190,10 @@ async function createCheckout(){
     .then(data =>{
       checkoutData = data;
     })
-    console.log(checkoutData)
+    console.log("Checkout data: ", checkoutData)
 
     CardSumUp = SumUpCard.mount({
+      //id: 'sumup-card',
       amount: prezzo*totPerson,
       checkoutId: checkoutData.id,
       currency: 'EUR',
@@ -227,6 +202,19 @@ async function createCheckout(){
         console.log('Type', type);
         console.log('Body', body);
 
+        console.log(body.status)
+
+        if(body.status === "PAID"){
+          console.log("risultato tranzasione: success")
+          document.getElementById("btn-submit").click();
+          document.getElementById("sheetdb-form").remove();
+          document.getElementById("title").innerHTML = "Grazie per esserti registrato all'evento! ✅";
+          CardSumUp.unmount();
+        }else if(body.status === "FAIL"){
+          document.getElementById("sheetdb-form").remove();
+          document.getElementById("title").innerHTML = "C'e' stato qualche problema con la transazione, per favore riprova ❌";
+          CardSumUp.unmount();
+        }
 
       }
     });
@@ -250,8 +238,8 @@ async function getAccessToken() {
       },
       body: new URLSearchParams({
         'grant_type': 'client_credentials',
-        'client_id': 'cc_classic_hwM9i0mFynd3mNpprT71nFK3WzrqV',
-        'client_secret': 'cc_sk_classic_maXe4rKf8QzL7xq2Gd4r46toDWKr9topAsBtaNCAipjniJjQOR'
+        'client_id': 'cc_classic_ZyuZactST2pJXq6aiCFjda9cC8X1h',
+        'client_secret': 'cc_sk_classic_p9Yh62uvOax3RNk0aSolU5eeutpxqUuPtJewrF1uEGUtQSHKFX'
       })
     })
     .then(res => {
@@ -271,14 +259,14 @@ async function authorization() {
   try {
     const response = await fetch('https://api.sumup.com/v0.1/me', {
       headers: {
-        'Authorization': 'Bearer sup_sk_eNAFh7E8QmnNNdi5s8rTzykwNmH9BaFrM'
+        'Authorization': 'Bearer sup_sk_m3XZP5mvErHlqGVPeuCkxeDV9HVHOL0sT'
       }
     })
     .then(res => {
       return res.json();
     })
     .then(data =>{
-      console.log(data);
+      console.log("authorization: ", data);
     })
   } catch (error) {
     console.error('Errore ottenendo autorizzazione:', error);
