@@ -8,21 +8,16 @@ const link20 = "https://pay.sumup.com/b2c/QEOXEFK9"; //40
 const link25 = "https://pay.sumup.com/b2c/QYKT3G65"; //50
 const link30 = "https://pay.sumup.com/b2c/Q8I71GMC"; //60
 
+const prezzo = 10;
 let linkPagamento = link5;
 let CardSumUp;
+let btnSumup;
+const idCheckOut = 'ID_UNICO_' + Date.now();
 
 function initialization(){
   //sizeStyle();
 
-  CardSumUp = SumUpCard.mount({
-    amount: 10*totPerson,
-    currency: 'EUR',
-    locale: "it-IT",
-    onResponse: (type, body) => {
-      console.log('Type', type);
-      console.log('Body', body);
-    }
-  });
+  document.getElementById("pagamento").addEventListener("click", createCheckout);
 
   let insta = navigator.userAgent.includes("Instagram");
   const isAndroid = navigator.userAgent.toLowerCase().includes('android');
@@ -49,7 +44,7 @@ function initialization(){
 
     document.getElementById('Date').value = date;
     //e.preventDefault();
-    //window.open(linkPagamento, '_blank');
+    window.open(linkPagamento, '_blank');
     /*
     
     const data = new FormData(form);
@@ -68,26 +63,27 @@ function initialization(){
   });
 }
 
+function payment(){
+  if(!isInputEmpty()){
+    document.getElementById("friends-button").remove();
+    document.getElementById("pagamento").remove();
 
+    
 
-/*
-async function fetchData(){
-  try{
-    const response = await fetch("https://sheetdb.io/api/v1/70kkrjloojdhb");
-
-    if(!response.ok){
-      throw new Error("Errore nella ricezione dei dati");
-    }
-
-    const data = await response.json();
-
-    console.log(data);
-
-  }catch(e){
-    console.log(e);
+    //btnSumup = document.getElementsByClassName("sumup-payment-18g68xa");
+    //btnSumup.addEventListener("click", getCardDate);
   }
+
 }
-*/
+
+function isInputEmpty(){
+  for(let i = 0; i < totPerson; i++){
+    if(document.getElementById(`input-nome${i}`).value === "" || document.getElementById(`input-cognome${i}`).value === "" || document.getElementById(`input-email${i}`).value === "" || document.getElementById(`input-telefono${i}`).value === ""){
+      return true;
+    }
+  }
+  return false;
+}
 
 function addFriend(){
     friendAdded++;
@@ -101,13 +97,13 @@ function addFriend(){
     let a = `<div id="row-nome${friendAdded}" class="row">
               <div id="Nome${friendAdded}">
                 <label for="validationDefault01" class="form-label"></label>
-                <input type="text" class="form-control" name="Nome${friendAdded}" placeholder="Nome" id="validationDefault01" value="" required>
+                <input id="input-nome${friendAdded}" type="text" class="form-control" name="Nome${friendAdded}" placeholder="Nome" id="validationDefault01" required>
               </div>
             </div>
             <div id="row-cognome${friendAdded}" class="row">
               <div id="Cognome${friendAdded}" class="">
                 <label for="validationDefault02" class="form-label"></label>
-                <input type="text" class="form-control" name="Cognome${friendAdded}" placeholder="Cognome" id="validationDefault02" value="" required>
+                <input id="input-cognome${friendAdded}" type="text" class="form-control" name="Cognome${friendAdded}" placeholder="Cognome" id="validationDefault02" required>
               </div>
             </div>
             <div id="Email${friendAdded}" class="row">
@@ -115,7 +111,7 @@ function addFriend(){
                 <label for="validationDefaultUsername" class="form-label"></label>
                 <div class="input-group">
                   <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                  <input type="email" class="form-control" name="Email${friendAdded}" placeholder="Email" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
+                  <input id="input-email${friendAdded}" type="email" class="form-control" name="Email${friendAdded}" placeholder="Email" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
                 </div>
               </div>
             </div>
@@ -124,7 +120,7 @@ function addFriend(){
                 <label for="validationDefault03" class="form-label"></label>
                 <div class="input-group">
                   <span class="input-group-text" id="inputGroupPrepend3">+39</span>
-                  <input type="tel" class="form-control" name="Telefono${friendAdded}" placeholder="Telefono" id="validationDefault03" aria-describedby="inputGroupPrepend3" required>
+                  <input id="input-telefono${friendAdded}" type="tel" class="form-control" name="Telefono${friendAdded}" placeholder="Telefono" id="validationDefault03" aria-describedby="inputGroupPrepend3" required>
                 </div>
               </div>
             </div>`;
@@ -140,14 +136,10 @@ function addFriend(){
     }
 
     pagamento();
-    CardSumUp.update({amount: 10*totPerson});
     //sizeStyle();
 }
-/*
-function pagamento(){
-  window.location.href = linkPagamento;
-}
-*/
+
+
 function removeFriend() {
     document.getElementById(`formFriend${friendAdded}`).remove();
     friendAdded--;
@@ -160,7 +152,6 @@ function removeFriend() {
     }
 
     pagamento();
-    CardSumUp.update({amount: 10*totPerson});
 }
 
 /*
@@ -185,104 +176,113 @@ function pagamento(){
   }
 }
 
-/*
-cerca di inviare i dati al google sheet in modo diverso cosi' da poter mettere nell'attributo action del form il link di pagamento
-
-non puoi aprire il link di pagamento direttamente da apps script perche' non sai che link aprire
-*/
-
-
-/*
-function paga(){
-  window.location = linkPagamento;
-  //window.open(linkPagamento,'_parent',''); 
-  window.close();
-  return false;
-}
-*/
-
-/*
-{
-  "application_type": "web",
-  "client_id": "cc_classic_3VBCzfd6xdNxR5BdrlWsAyP95SeYZ",
-  "client_secret": "cc_sk_classic_F6HEKbAdRXUEKZLNQDtYdPVZej1hjSAGZmoDzRdWvtkjx6EXso",
-  "cors_uris": [
-    ""
-  ],
-  "id": "CCCNPS42D",
-  "name": "Registrazione Eventi",
-  "redirect_uris": [
-    "https://leo312002.github.io/FormGabbo/"
-  ]
-}
-
-
-const axios = require('axios');
-
-async function getAccessToken() {
-  const params = new URLSearchParams();
-  params.append('grant_type', 'client_credentials');
-
-  const response = await axios.post('https://api.sumup.com/token', params, {
-    auth: {
-      username: "cc_classic_3VBCzfd6xdNxR5BdrlWsAyP95SeYZ",
-      password: "cc_sk_classic_F6HEKbAdRXUEKZLNQDtYdPVZej1hjSAGZmoDzRdWvtkjx6EXso"
+async function getCardDate(){
+  const res = await fetch("http://localhost:5500"+"/cardData", {
+    method: "get",
+    headers: {
+      'Content-Type': 'application/json'
+    }, body: {
+      "description": "Sample one-time payment"
     }
-  });
+  })
+  console.log(res);
 
-  return response.data.access_token;
 }
 
 
-
-async function createPaymentLink(amount, currency, description) {
+let checkoutData;
+async function createCheckout(){
+  try {
     const accessToken = await getAccessToken();
-  
-    const response = await axios.post('https://api.sumup.com/v0.1/me/payment-links', {
-      amount: amount,
-      currency: currency,
-      description: description
-    }, {
+    console.log(accessToken)
+    const response = await fetch('https://api.sumup.com/v0.1/checkouts', {
+      method: "POST",
       headers: {
-        'Authorization': `Bearer ${accessToken}`
+        'Authorization': 'Bearer sup_sk_eNAFh7E8QmnNNdi5s8rTzykwNmH9BaFrM',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }, 
+      body: new URLSearchParams({
+        'checkout_reference': idCheckOut,
+        'amount': prezzo*totPerson,
+        'currency': "EUR",
+        "merchant_code": "MRE27XD3",
+        'pay_to_email' : "yokes-hearted-0m@icloud.com",
+        'description': "Sample one-time payment"
+      })
+    })
+    .then(res => {
+      return res.json();
+    })
+    .then(data =>{
+      checkoutData = data;
+    })
+    console.log(checkoutData)
+
+    CardSumUp = SumUpCard.mount({
+      amount: prezzo*totPerson,
+      checkoutId: checkoutData.id,
+      currency: 'EUR',
+      locale: "it-IT",
+      onResponse: (type, body) => {
+        console.log('Type', type);
+        console.log('Body', body);
+
+
       }
     });
-  
-    return response.data.short_url;
-  }
-  
-*/
-/*
-// Funzione per creare il checkout
-async function initializePayment() {
-  try {
-    // Effettua una chiamata al tuo server per ottenere un checkoutId
-    const response = await fetch('/create-checkout');
-    const data = await response.json();
-    const checkoutId = data.checkoutId;
 
-    // Inizializza il widget SumUp
-    SumUpCard.mount({
-      checkoutId: checkoutId,
-      onResponse: function (type, body) {
-        if (type === 'success') {
-          // Pagamento completato con successo
-          window.location.href = '/successo';
-        } else {
-          // Gestione degli errori
-          alert('Errore durante il pagamento: ' + body.error.message);
-        }
-      },
-    });
+    return checkoutData;
   } catch (error) {
-    console.error('Errore durante l\'inizializzazione del pagamento:', error);
+    console.error('Errore creazione checkout:', error);
+    throw error;
+  }
+
+}
+
+async function getAccessToken() {
+  try {
+    const auth = await authorization();
+    let at;
+    const response = await fetch('https://api.sumup.com/token', {
+      method : "POST",
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({
+        'grant_type': 'client_credentials',
+        'client_id': 'cc_classic_hwM9i0mFynd3mNpprT71nFK3WzrqV',
+        'client_secret': 'cc_sk_classic_maXe4rKf8QzL7xq2Gd4r46toDWKr9topAsBtaNCAipjniJjQOR'
+      })
+    })
+    .then(res => {
+      return res.json();
+    })
+    .then(data =>{
+      at = data.access_token;
+    })
+    return at;
+  } catch (error) {
+    console.error('Errore ottenendo il token di accesso:', error);
+    throw error;
   }
 }
 
-// Chiama la funzione per inizializzare il pagamento
-initializePayment();
-*/
-
-
-
+async function authorization() {
+  try {
+    const response = await fetch('https://api.sumup.com/v0.1/me', {
+      headers: {
+        'Authorization': 'Bearer sup_sk_eNAFh7E8QmnNNdi5s8rTzykwNmH9BaFrM'
+      }
+    })
+    .then(res => {
+      return res.json();
+    })
+    .then(data =>{
+      console.log(data);
+    })
+  } catch (error) {
+    console.error('Errore ottenendo autorizzazione:', error);
+    throw error;
+  }
+}
 

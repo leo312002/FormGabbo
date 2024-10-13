@@ -25,13 +25,13 @@
                             <div id="row-nome" class="row">
                                 <div id="Nome">
                                     <label for="validationDefault01" class="form-label"></label>
-                                    <input type="text" class="form-control" name="Nome" placeholder="Nome" id="validationDefault01" value="" required>
+                                    <input id="input-nome0" type="text" class="form-control" name="Nome" placeholder="Nome" id="validationDefault01" required>
                                 </div>
                             </div>
                             <div id="row-cognome" class="row">
                                 <div id="Cognome" class="">
                                     <label for="validationDefault02" class="form-label"></label>
-                                    <input type="text" class="form-control" name="Cognome" placeholder="Cognome" id="validationDefault02" value="" required>
+                                    <input id="input-cognome0" type="text" class="form-control" name="Cognome" placeholder="Cognome" id="validationDefault02" required>
                                 </div>
                             </div>
                         <!--</div>-->
@@ -40,7 +40,7 @@
                                 <label for="validationDefaultUsername" class="form-label"></label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                                    <input type="email" class="form-control" name="Email" placeholder="Email" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
+                                    <input id="input-email0" type="email" class="form-control" name="Email" placeholder="Email" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
                                 </div>
                             </div>
                         </div>
@@ -49,29 +49,34 @@
                                 <label for="validationDefault03" class="form-label"></label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="inputGroupPrepend3">+39</span>
-                                    <input type="tel" class="form-control" name="Telefono" placeholder="Telefono" id="validationDefault03" aria-describedby="inputGroupPrepend3" required>
+                                    <input id="input-telefono0" type="tel" class="form-control" name="Telefono" placeholder="Telefono" id="validationDefault03" aria-describedby="inputGroupPrepend3" required>
                                 </div>
                             </div>
                         </div>
             
                         <div id="formFriend"></div>
-
-                        <div id="sumup-card"></div>
                         
                         <hr>
 
-                        <div class="d-grid gap-2 mb-4">
+                        <div id="friends-button" class="d-grid gap-2 mb-4">
                             <button type="button" id="btn-addFriend" class="btn btn-custom mt-3" onclick="addFriend()">+ Aggiungi amico</button>
                             <button type="button" id="btn-removeFriend" class="btn btn-custom mt-3" onclick="removeFriend()" style="display: none;">- Rimuovi amico</button>
                         </div>
 
-                        <div class="d-grid gap-2 mb-4">
-                            <button class="btn btn-primary btn-lg" type="submit">Procedi al pagamento</button>
+                        <div id="pagamento"class="d-grid gap-2 mb-4">
+                            <button class="btn btn-primary btn-lg" type="button" onclick="payment()">Procedi al pagamento</button>
                         </div>
             
                         <input type="text" name="canale_di_vendita" id="vendita" value="" style="display: none;">
                         <input type="number" name="valore_in_euro" id="valore" value="" style="display: none;">
                         <input type="text" name="Date" id="Date" value="" style="display: none;">
+
+
+                        <div id="sumup-card" class="mb-4"></div>
+
+                        <button class="btn btn-primary btn-lg" type="submit" style="display: none;">Submit</button>
+                        <!-- document.getElementById("myBtn").click() -->
+
                     </form>
 
                     <p class="text">circolo limoni 🍋✨ halloween party </p>
@@ -90,7 +95,7 @@
 
 
 
-        
+
         <script src="Form.js"></script>
 </body>
 </html>
