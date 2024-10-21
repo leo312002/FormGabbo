@@ -22,7 +22,7 @@
                 <div class="content">
                     <h6 id="title" class="mt-2 px-2 mx-2 mb-4">Compila il form, procedi con il pagamento, ricevi la tua tessera per l'evento!</h6> <!--mx-3-->
                     <div id="instagram" class="alert alert-warning mt-3" role="alert" style="display: none;">Stai visulizzando il sito da instagram. Alcune azioni potrebbero non funzionare correttamente, per evitare questo tipo di problemi copia il link https://circololimoni.it/ direttamente su Chrome o Safari</div>
-                    <form id="sheetdb-form" method="POST" action="https://sheetdb.io/api/v1/70kkrjloojdhb">
+                    <form id="sheetdb-form"><!--method="POST" action="https://sheetdb.io/api/v1/70kkrjloojdhb"-->
                         <!--<div class="formFriend">-->
                             <div id="row-nome" class="row">
                                 <div id="Nome">
@@ -73,15 +73,15 @@
                         <input type="number" name="valore_in_euro" id="valore" value="" style="display: none;">
                         <input type="text" name="Date" id="Date" value="" style="display: none;">
 
+                        <button id="btn-submit" class="btn btn-primary btn-lg" type="submit" style="display: none;">Submit</button>
 
-                        <div id="checkout" class="mb-4"></div>
+                    </form>
+
+                    <div id="checkout" class="mb-4"></div>
 <!--
                         <img src="https://online.satispay.com/images/en-pay-red.svg" alt="Pay with Satispay" id="pay-with-satispay" style="height: 50px; cursor: pointer;" />
                         <div id="sumup-card" class="mb-4"></div>
 -->
-                        <button id="btn-submit" class="btn btn-primary btn-lg" type="submit" style="display: none;">Submit</button>
-
-                    </form>
 
                     <p class="text">circolo limoni 🍋✨ halloween party </p>
                     <p class="text">giovedì 31 ottobre — from 23:00</p>
@@ -94,12 +94,8 @@
                 </div>
             </div>
         </div>
+        
 
-
-
-
-
-
-        <script src="index.js"></script>
+        <script src="index.js" type="text/javascript"></script>
 </body>
 </html>
