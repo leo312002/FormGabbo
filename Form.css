@@ -50,7 +50,7 @@
             box-shadow: 0px 17px 34px -20px #f55951;
   }
 
-  @media screen and (max-width: 415px) {
+  @media screen and (max-width: 425px) {
     .container {
       border-radius: 0 0 1em 1em;
     }
@@ -71,9 +71,17 @@
   }
   
   .container {
-    max-width: 415px;
+    max-width: 400px;
     overflow: hidden;
     padding: 0;
+  }
+
+  @media screen and (max-width: 425px) {
+    .container {
+    max-width: 425px;
+    overflow: hidden;
+    padding: 0;
+  }
   }
   
   .img {
@@ -168,3 +176,10 @@
     text-align: center;
   }
   
+  .invalid{
+    width: 100%;
+    margin-top: .25rem;
+    font-size: .875em;
+    color: var(--bs-form-invalid-color);
+    text-align: left;
+  }

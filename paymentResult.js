@@ -12,7 +12,6 @@ async function initialization(){
   sheetdb();
 
   localStorage.clear();
-  //removeFormData();
 }
 
 
@@ -34,7 +33,8 @@ function sheetdb(){
                   "Email": localStorage.getItem(`Email${i}`),
                   "Telefono": localStorage.getItem(`Telefono${i}`),
                   "canale_di_vendita": localStorage.getItem(`Canale${i}`),
-                  "valore_in_euro": localStorage.getItem(`Valore${i}`)
+                  "valore_in_euro": localStorage.getItem(`Valore${i}`),
+                  "Metodo di Pagamento": "stripe"
               }]
       })
     })
@@ -43,18 +43,5 @@ function sheetdb(){
   }
 }
 
-
-function removeFormData(){
-  for(let i = 0; i < totPerson; i++){
-    localStorage.removeItem("Date"),
-    localStorage.removeItem(`Nome${i}`)
-    localStorage.removeItem(`Cognome${i}`)
-    localStorage.removeItem(`Email${i}`)
-    localStorage.removeItem(`Telefono${i}`)
-    localStorage.removeItem(`Canale${i}`)
-    localStorage.removeItem(`Valore${i}`)
-  }
-  localStorage.removeItem("totPerson");
-}
 
 
