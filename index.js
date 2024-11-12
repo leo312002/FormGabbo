@@ -2,7 +2,7 @@
 
 let friendAdded = 0;
 let totPerson = 1;
-const prezzo = 15;
+const prezzo = 20;
 let canaleDiVendita, valoreInEuro;
 //const stripe = Stripe('pk_test_51QAv6nBlOJumB3Tb4czFvyfDoho7mf8pFnS1GKHhoxygr18cvwBEzNZTnsAo2zFREw5ShDy9bDGAdXC4JENUy3SH00cyYldY4e');
 const stripe = Stripe('pk_live_51QAv6nBlOJumB3TbwzRFO14tmTkgA5QUj0FWnxCbF78IVvfg2LoPlH3yxvQmKn0ofSlocgjTrmHspbKKrxMC9Awq00VKm3xvdu');
@@ -89,7 +89,7 @@ async function sheetdb() {
 
 function sheetdb(){
   for(let i = 0; i < totPerson; i++){
-    fetch('https://sheetdb.io/api/v1/w9iqfm0vgapyk', {
+    fetch('https://sheetdb.io/api/v1/fu50bgf6xw2j9', {
       method: 'POST',
       headers: {
           'Accept': 'application/json',
@@ -102,6 +102,8 @@ function sheetdb(){
                   "Cognome": document.getElementById(`input-cognome${i}`).value,
                   "Email": document.getElementById(`input-email${i}`).value,
                   "Telefono": document.getElementById(`input-telefono${i}`).value,
+                  "CF": document.getElementById(`input-CF${i}`).value,
+                  "Residenza": document.getElementById(`input-residenza${i}`).value,
                   "canale_di_vendita": canaleDiVendita,
                   "valore_in_euro": "DEVE PAGARE"
               }]
@@ -121,7 +123,7 @@ async function createCheckout() {
         headers: {
           "Content-Type": "application/json",
         }, body: JSON.stringify({
-          'totPerson': totPerson
+          totPerson: totPerson
         })
       });
       const { clientSecret } = await response.json();
@@ -150,6 +152,8 @@ function saveFormData(){
     localStorage.setItem(`Cognome${i}`, document.getElementById(`input-cognome${i}`).value)
     localStorage.setItem(`Email${i}`, document.getElementById(`input-email${i}`).value)
     localStorage.setItem(`Telefono${i}`, document.getElementById(`input-telefono${i}`).value)
+    localStorage.setItem(`CF${i}`, document.getElementById(`input-CF${i}`).value)
+    localStorage.setItem(`Residenza${i}`, document.getElementById(`input-residenza${i}`).value)
     localStorage.setItem(`Canale${i}`, canaleDiVendita)
     localStorage.setItem(`Valore${i}`, prezzo)
   }
@@ -158,8 +162,9 @@ function saveFormData(){
 
 function isInputValid(){
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const CFpattern = /^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$/;
   for(let i = 0; i < totPerson; i++){
-    if(document.getElementById(`input-nome${i}`).value === "" || document.getElementById(`input-cognome${i}`).value === "" || document.getElementById(`input-email${i}`).value === "" || document.getElementById(`input-telefono${i}`).value === ""){
+    if(document.getElementById(`input-nome${i}`).value === "" || document.getElementById(`input-cognome${i}`).value === "" || document.getElementById(`input-email${i}`).value === "" || document.getElementById(`input-telefono${i}`).value === "" || document.getElementById(`input-CF${i}`).value === "" || document.getElementById(`input-residenza${i}`).value === ""){
       return false;
     }else if(emailPattern.test(document.getElementById(`input-email${i}`).value) == false){
       document.getElementById(`invalid-email${i}`).innerHTML = "Formato email non valido"
@@ -180,6 +185,10 @@ function isInputValid(){
     }else if((document.getElementById(`input-telefono${i}`).value).length > 10){
       document.getElementById(`invalid-telefono${i}`).innerHTML = "Numero di telefono non valido (più di 10 cifre)"
       document.getElementById(`invalid-telefono${i}`).style.display = "inline-block";
+      return false;
+    }else if(document.getElementById(`input-CF${i}`).value.search(CFpattern) == -1){
+      document.getElementById(`invalid-CF${i}`).innerHTML = "Formato non valido"
+      document.getElementById(`invalid-CF${i}`).style.display = "inline-block";
       return false;
     }
   }
@@ -245,6 +254,16 @@ function addFriend(){
                 </div>
               </div>
               <div id="invalid-telefono${friendAdded}" class="invalid ms-3 ps-5" style="display: none;"></div>
+            </div>
+            <div id="CF${friendAdded}" class="mt-4">
+              <h2 class="form-label"></h2>
+              <input id="input-CF${friendAdded}" type="text" class="form-control" name="CF${friendAdded}" placeholder="Codice Fiscale" required>
+              <div id="invalid-CF${friendAdded}" class="invalid" style="display: none;"></div>
+            </div>
+            <div id="residenza${friendAdded}" class="mt-4 mb-4">
+              <h2 class="form-label"></h2>
+              <input id="input-residenza${friendAdded}" type="text" class="form-control" name="Residenza${friendAdded}" placeholder="Indirizzo di residenza" required>
+              <div id="invalid-residenza${friendAdded}" class="invalid" style="display: none;"></div>
             </div>`;
 
     document.getElementById("formFriend").append(newFormFriend);
